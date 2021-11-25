@@ -44,7 +44,7 @@ export class SignupComponent implements OnInit {
     }
     this.authService.signup(this.authForm.value)
       .subscribe((response) => {
-        console.log( response );
+        console.log( response.username );
       });
   }
 
