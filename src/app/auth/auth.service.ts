@@ -7,6 +7,8 @@ import { UsernameAvailableResponse } from './signup/interfaces';
 })
 export class AuthService {
 
+  urlBasica = 'a ver si falla';
+
   constructor(private http: HttpClient ) {
 
   }
