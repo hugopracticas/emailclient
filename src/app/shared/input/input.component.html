@@ -1,4 +1,32 @@
 <div class="field">
     <label>{{ label }}</label>
-    <input [formControl]="control"/>
+    <input [type]="inputType" [formControl]="control"/>
+    <div *ngIf="showErrors()" class="ui pointing red basic label">
+        <p *ngIf="control.errors.required">
+            Valor es requerido
+        </p>
+        <p *ngIf="control.errors.minlength">
+            El valor requerido para este campo es 
+            {{ control.errors.minlength.requiredLength }},
+            te hacen falta
+            {{ control.errors.minlength.requiredLength - control.errors.minlength.actualLength }}
+            caracteres.
+        </p>
+        <p *ngIf="control.errors.maxlength">
+            El numero actualde caracteres que ingresaste es de {{ control.errors.maxlength.actualLength }}, 
+            pero no puede ser mayor a  {{ control.errors.maxlength.requiredLength }}, quita
+            {{ control.errors.maxlength.actualLength - control.errors.maxlength.requiredLength }} caracteres
+        </p>
+        <p *ngIf="control.errors.pattern">
+            Este formato no es valido.
+        </p>
+        <!--Hace referencia al error que esta en la clase de Unique-username.ts-->
+        <p *ngIf="control.errors.nonUniqueUsername"> 
+            Este nombre de usario, ya existe.
+        </p>
+        <!--Hace referencia al error que esta en la clase de Unique-username.ts-->
+        <p *ngIf="control.errors.noConnection">
+            No hay internet, no podemos saber si ya existe este usuario.
+        </p>
+    </div>
 </div>
