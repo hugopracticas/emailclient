@@ -38,6 +38,12 @@
         <p *ngIf="authForm.errors.passwordsDontMatch">
             El password y la confiemacion del password deben de coincidir.
         </p>
+        <p *ngIf="authForm.errors.noConnection">
+            No se ha detectado una coneccion a internet, fallo el registro.
+        </p>
+        <p *ngIf="authForm.errors.unknownError">
+            Fallo el registro.
+        </p>
     </div>
 
     <div>
@@ -46,5 +52,5 @@
         </button>
     </div>
     
-    {{ authForm.errors | json }}
+    <!-- {{ authForm.errors | json }} -->
 </form>
