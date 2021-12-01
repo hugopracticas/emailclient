@@ -21,21 +21,14 @@ export class AuthHttpInterceptor implements HttpInterceptor {
         const modifiedReq = req.clone({
             withCredentials: true
         });
-        return next.handle( modifiedReq ).pipe(
-            // tap( val => {
-            //     if(val.type === HttpEventType.Sent){
-            //         console.log('Request was sent to server');
-            //     }
+        //return next.handle( modifiedReq ).pipe(
+        //     filter(val => val.type === HttpEventType.Sent),
 
-            //     if(val.type === HttpEventType.Response){
-            //         console.log('Got a response from the API', val);
-            //     }
-            // })
-            filter(val => val.type === HttpEventType.Sent),
+        //     tap(val => {
+        //         console.log( val );
+        //     })
+        // );
 
-            tap(val => {
-                console.log('Sent the request');
-            })
-        );
+        return next.handle(modifiedReq);
     }
 }
