@@ -6,6 +6,11 @@ export interface Name{
     nombre: string;
     edad: number
 }
+
+export interface NameOne{
+    nombre: string;
+    edad: number
+}
 export interface SignupCredentials {
     username: string;
     password: string;
