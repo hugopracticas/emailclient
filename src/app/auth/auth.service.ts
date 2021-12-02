@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { SignedinResponse, SignupCredentials, SignupResponse, UsernameAvailableResponse } from './signup/interfaces';
 import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { SigninCredentials } from './signin/interfacesSignin';
 @Injectable({
   providedIn: 'root'
 })
@@ -51,4 +52,14 @@ export class AuthService {
         })
       )
   }
+
+  signin(credentials: SigninCredentials){
+   return this.http.post(`${this.rootUrl}/auth/signin`, credentials)
+    .pipe(
+      tap(() => {
+        this.signedin$.next(true);
+      })
+    ) 
+  }
+
 }
